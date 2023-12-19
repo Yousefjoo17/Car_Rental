@@ -32,7 +32,7 @@ class _RegisterViewState extends State<RegisterView> {
               key: formkey,
               child: ListView(
                 children: [
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 60),
                   Image.asset(
                     AssetsData.car2,
                     height: 100,

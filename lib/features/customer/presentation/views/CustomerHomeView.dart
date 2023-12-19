@@ -11,8 +11,16 @@ class CustomerHomeView extends StatefulWidget {
 }
 
 class _CustomerHomeViewState extends State<CustomerHomeView> {
-  String? dropDownValue = 'one'; // Change the initial value to 'two'
-  List<String> myList = ['one', 'two', 'three', 'four', 'five'];
+  String? citydropDownValue = 'all';
+  List<String> cityList = ['all', 'cone', 'ctwo', 'tchree', 'fcour', 'cfive'];
+  String? modaldropDownValue = 'all';
+  List<String> modalList = ['all', 'mone', 'mtwo', 'mthree', 'mfour', 'mfive'];
+  String? yeardropDownValue = 'all';
+  List<String> yearList = ['all', 'yone', 'ytwo', 'ythree', 'yfour', 'yfive'];
+  String? colordropDownValue = 'all';
+  List<String> colorList = ['all', 'vone', 'vtwo', 'vthree', 'vfour', 'vfive'];
+  String? branddropDownValue = 'all'; 
+  List<String> brandList = ['all', 'bone', 'btwo', 'tbhree', 'fbour', 'bfive'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,15 +47,86 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                   ),
                   const Spacer(),
                   CustomDropdown(
-                    value: dropDownValue,
-                    items: myList,
+                    value: citydropDownValue,
+                    itemsList: cityList,
                     onChanged: (value) {
                       setState(() {
-                        dropDownValue = value;
+                        citydropDownValue = value;
                       });
-                      print('changed********');
                     },
                   )
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    "modal",
+                    style: TextStyle(fontSize: 24),
+                  ),
+                  const Spacer(),
+                  CustomDropdown(
+                    value: modaldropDownValue,
+                    itemsList: modalList,
+                    onChanged: (value) {
+                      setState(() {
+                        modaldropDownValue = value;
+                      });
+                    },
+                  )
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    "year",
+                    style: TextStyle(fontSize: 24),
+                  ),
+                  const Spacer(),
+                  CustomDropdown(
+                    value: yeardropDownValue,
+                    itemsList: yearList,
+                    onChanged: (value) {
+                      setState(() {
+                        yeardropDownValue = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    "color",
+                    style: TextStyle(fontSize: 24),
+                  ),
+                  const Spacer(),
+                  CustomDropdown(
+                    value: colordropDownValue,
+                    itemsList: colorList,
+                    onChanged: (value) {
+                      setState(() {
+                        colordropDownValue = value;
+                      });
+                    },
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  const Text(
+                    "Brand",
+                    style: TextStyle(fontSize: 24),
+                  ),
+                  const Spacer(),
+                  CustomDropdown(
+                    value: branddropDownValue,
+                    itemsList: brandList,
+                    onChanged: (value) {
+                      setState(() {
+                        branddropDownValue = value;
+                      });
+                    },
+                  ),
                 ],
               )
             ],

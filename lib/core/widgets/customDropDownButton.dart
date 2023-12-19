@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 
 class CustomDropdown extends StatelessWidget {
   final String? value;
-  final List<String> items;
+  final List<String> itemsList;
   final void Function(String?) onChanged;
 
   const CustomDropdown({
     Key? key,
     required this.value,
-    required this.items,
+    required this.itemsList,
     required this.onChanged,
   }) : super(key: key);
 
@@ -17,7 +17,7 @@ class CustomDropdown extends StatelessWidget {
     return DropdownButton<String>(
       value: value,
       icon: const Icon(Icons.menu),
-      items: items.map((item) {
+      items: itemsList.map((item) {
         return DropdownMenuItem<String>(
           value: item,
           child: Text(item),
