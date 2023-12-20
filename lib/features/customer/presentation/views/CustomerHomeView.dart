@@ -2,6 +2,7 @@ import 'package:carrental/constants.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
 import 'package:carrental/core/widgets/customDropDownButton.dart';
 import 'package:carrental/features/customer/presentation/views/widgets/customCarCard.dart';
+import 'package:carrental/features/customer/presentation/views/widgets/selectionRow.dart';
 import 'package:flutter/material.dart';
 
 class CustomerHomeView extends StatefulWidget {
@@ -46,105 +47,55 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(
-                child: Row(
-                  children: [
-                    const Text(
-                      "city",
-                      style: TextStyle(fontSize: 24),
-                    ),
-                    const Spacer(),
-                    CustomDropdown(
-                      value: citydropDownValue,
-                      itemsList: cityList,
-                      onChanged: (value) {
-                        setState(() {
-                          citydropDownValue = value;
-                        });
-                      },
-                    )
-                  ],
-                ),
+              SelectionRow(
+                dropDownval: citydropDownValue!,
+                itemList: cityList,
+                name: "city",
+                onChanged: (p0) {
+                  setState(() {
+                    citydropDownValue = p0;
+                  });
+                },
               ),
-              SliverToBoxAdapter(
-                child: Row(
-                  children: [
-                    const Text(
-                      "modal",
-                      style: TextStyle(fontSize: 24),
-                    ),
-                    const Spacer(),
-                    CustomDropdown(
-                      value: modaldropDownValue,
-                      itemsList: modalList,
-                      onChanged: (value) {
-                        setState(() {
-                          modaldropDownValue = value;
-                        });
-                      },
-                    ),
-                  ],
-                ),
+              SelectionRow(
+                dropDownval: modaldropDownValue!,
+                itemList: modalList,
+                name: "modal",
+                onChanged: (p0) {
+                  setState(() {
+                    modaldropDownValue = p0;
+                  });
+                },
               ),
-              SliverToBoxAdapter(
-                child: Row(
-                  children: [
-                    const Text(
-                      "color",
-                      style: TextStyle(fontSize: 24),
-                    ),
-                    const Spacer(),
-                    CustomDropdown(
-                      value: colordropDownValue,
-                      itemsList: colorList,
-                      onChanged: (value) {
-                        setState(() {
-                          colordropDownValue = value;
-                        });
-                      },
-                    ),
-                  ],
-                ),
+              SelectionRow(
+                dropDownval: colordropDownValue!,
+                itemList: colorList,
+                name: "color",
+                onChanged: (p0) {
+                  setState(() {
+                    colordropDownValue = p0;
+                  });
+                },
               ),
-              SliverToBoxAdapter(
-                child: Row(
-                  children: [
-                    const Text(
-                      "Brand",
-                      style: TextStyle(fontSize: 24),
-                    ),
-                    const Spacer(),
-                    CustomDropdown(
-                      value: branddropDownValue,
-                      itemsList: brandList,
-                      onChanged: (value) {
-                        setState(() {
-                          branddropDownValue = value;
-                        });
-                      },
-                    ),
-                  ],
-                ),
+              SelectionRow(
+                dropDownval: branddropDownValue!,
+                itemList: brandList,
+                name: "Brand",
+                onChanged: (p0) {
+                  setState(() {
+                    branddropDownValue = p0;
+                  });
+                },
               ),
-              SliverToBoxAdapter(
-                child: Row(
-                  children: [
-                    const Text(
-                      "year",
-                      style: TextStyle(fontSize: 24),
-                    ),
-                    const Spacer(),
-                    CustomDropdown(
-                      value: yeardropDownValue,
-                      itemsList: yearList,
-                      onChanged: (value) {
-                        setState(() {
-                          yeardropDownValue = value;
-                        });
-                      },
-                    ),
-                  ],
-                ),
+              SelectionRow(
+                dropDownval: yeardropDownValue!,
+                itemList: yearList,
+                name: "year",
+                onChanged: (p0) {
+                  setState(() {
+                    yeardropDownValue = p0;
+                  });
+                },
               ),
               SliverGrid(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
