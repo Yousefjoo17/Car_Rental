@@ -1,10 +1,11 @@
 import 'package:carrental/constants.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
 import 'package:carrental/core/widgets/customDropDownButton.dart';
+import 'package:carrental/features/customer/presentation/views/widgets/customCarCard.dart';
 import 'package:flutter/material.dart';
 
 class CustomerHomeView extends StatefulWidget {
-  const CustomerHomeView({super.key});
+  const CustomerHomeView({Key? key}) : super(key: key);
 
   @override
   State<CustomerHomeView> createState() => _CustomerHomeViewState();
@@ -19,116 +20,144 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
   List<String> yearList = ['all', 'yone', 'ytwo', 'ythree', 'yfour', 'yfive'];
   String? colordropDownValue = 'all';
   List<String> colorList = ['all', 'vone', 'vtwo', 'vthree', 'vfour', 'vfive'];
-  String? branddropDownValue = 'all'; 
+  String? branddropDownValue = 'all';
   List<String> brandList = ['all', 'bone', 'btwo', 'tbhree', 'fbour', 'bfive'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         decoration: customBoxDecoration(
-            [kprimaryColor0, kprimaryColor1, kprimaryColor2]),
+          [kprimaryColor0, kprimaryColor1, kprimaryColor2],
+        ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              const SizedBox(height: 30),
-              const Center(
-                child: Text(
-                  "Welcome!!",
-                  style: TextStyle(fontSize: 40),
+          child: CustomScrollView(
+            slivers: [
+              const SliverToBoxAdapter(
+                child: SizedBox(height: 30),
+              ),
+              const SliverToBoxAdapter(
+                child: Center(
+                  child: Text(
+                    "Pick up a car !",
+                    style: TextStyle(
+                        fontSize: 45, fontFamily: 'Caveat', color: Colors.red),
+                  ),
                 ),
               ),
-              Row(
-                children: [
-                  const Text(
-                    "city",
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  const Spacer(),
-                  CustomDropdown(
-                    value: citydropDownValue,
-                    itemsList: cityList,
-                    onChanged: (value) {
-                      setState(() {
-                        citydropDownValue = value;
-                      });
-                    },
-                  )
-                ],
+              SliverToBoxAdapter(
+                child: Row(
+                  children: [
+                    const Text(
+                      "city",
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    const Spacer(),
+                    CustomDropdown(
+                      value: citydropDownValue,
+                      itemsList: cityList,
+                      onChanged: (value) {
+                        setState(() {
+                          citydropDownValue = value;
+                        });
+                      },
+                    )
+                  ],
+                ),
               ),
-              Row(
-                children: [
-                  const Text(
-                    "modal",
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  const Spacer(),
-                  CustomDropdown(
-                    value: modaldropDownValue,
-                    itemsList: modalList,
-                    onChanged: (value) {
-                      setState(() {
-                        modaldropDownValue = value;
-                      });
-                    },
-                  )
-                ],
+              SliverToBoxAdapter(
+                child: Row(
+                  children: [
+                    const Text(
+                      "modal",
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    const Spacer(),
+                    CustomDropdown(
+                      value: modaldropDownValue,
+                      itemsList: modalList,
+                      onChanged: (value) {
+                        setState(() {
+                          modaldropDownValue = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ),
-              Row(
-                children: [
-                  const Text(
-                    "year",
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  const Spacer(),
-                  CustomDropdown(
-                    value: yeardropDownValue,
-                    itemsList: yearList,
-                    onChanged: (value) {
-                      setState(() {
-                        yeardropDownValue = value;
-                      });
-                    },
-                  ),
-                ],
+              SliverToBoxAdapter(
+                child: Row(
+                  children: [
+                    const Text(
+                      "color",
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    const Spacer(),
+                    CustomDropdown(
+                      value: colordropDownValue,
+                      itemsList: colorList,
+                      onChanged: (value) {
+                        setState(() {
+                          colordropDownValue = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ),
-              Row(
-                children: [
-                  const Text(
-                    "color",
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  const Spacer(),
-                  CustomDropdown(
-                    value: colordropDownValue,
-                    itemsList: colorList,
-                    onChanged: (value) {
-                      setState(() {
-                        colordropDownValue = value;
-                      });
-                    },
-                  ),
-                ],
+              SliverToBoxAdapter(
+                child: Row(
+                  children: [
+                    const Text(
+                      "Brand",
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    const Spacer(),
+                    CustomDropdown(
+                      value: branddropDownValue,
+                      itemsList: brandList,
+                      onChanged: (value) {
+                        setState(() {
+                          branddropDownValue = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
               ),
-              Row(
-                children: [
-                  const Text(
-                    "Brand",
-                    style: TextStyle(fontSize: 24),
-                  ),
-                  const Spacer(),
-                  CustomDropdown(
-                    value: branddropDownValue,
-                    itemsList: brandList,
-                    onChanged: (value) {
-                      setState(() {
-                        branddropDownValue = value;
-                      });
-                    },
-                  ),
-                ],
-              )
+              SliverToBoxAdapter(
+                child: Row(
+                  children: [
+                    const Text(
+                      "year",
+                      style: TextStyle(fontSize: 24),
+                    ),
+                    const Spacer(),
+                    CustomDropdown(
+                      value: yeardropDownValue,
+                      itemsList: yearList,
+                      onChanged: (value) {
+                        setState(() {
+                          yeardropDownValue = value;
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ),
+              SliverGrid(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio: 1.2,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 60,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return const CustomCarCard();
+                }, childCount: 20),
+              ),
             ],
           ),
         ),
