@@ -1,4 +1,5 @@
 import 'package:carrental/core/utils/assets.dart';
+import 'package:carrental/features/customer/presentation/views/bookingCarView.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -11,7 +12,10 @@ class CustomCarCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        //Navigator.pushNamed(context, UpdateProduct.id, arguments: product);
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const BookingCarView()),
+        );
       },
       child: Stack(
         clipBehavior: Clip.none,

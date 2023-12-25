@@ -20,7 +20,10 @@ class CustomDropdown extends StatelessWidget {
       items: itemsList.map((item) {
         return DropdownMenuItem<String>(
           value: item,
-          child: Text(item),
+          child: Text(
+            item,
+            style: const TextStyle(fontSize: 20, color: Colors.black),
+          ),
         );
       }).toList(),
       onChanged: onChanged,
