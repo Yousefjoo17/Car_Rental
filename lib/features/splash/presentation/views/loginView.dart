@@ -3,8 +3,11 @@ import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
 import 'package:carrental/core/utils/assets.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/core/widgets/Custom_text_field.dart';
-import 'package:carrental/features/customer/presentation/views/CustomerHomeView.dart';
+import 'package:carrental/features/Employee/EmployeeHomeView.dart';
+import 'package:carrental/features/caOwner/CarOwnerHomeView.dart';
+import 'package:carrental/features/customer/CustomerHomeView.dart';
 import 'package:carrental/features/splash/presentation/views/registerView.dart';
+import 'package:carrental/main.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
@@ -70,12 +73,28 @@ class _LoginViewState extends State<LoginView> {
                   CustomButton(
                     text: 'Log in',
                     ontap: () async {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const CustomerHomeView(),
-                        ),
-                      );
+                      if (iScustomer) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CustomerHomeView(),
+                          ),
+                        );
+                      } else if (iSEmployee) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const EmployeeHomeView(),
+                          ),
+                        );
+                      } else if (isCarOwner) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CarOwnerHomeView(),
+                          ),
+                        );
+                      }
                       if (formkey.currentState!.validate()) {
                       } else {}
                     },

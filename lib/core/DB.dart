@@ -1,9 +1,9 @@
-import 'package:carrental/features/home/presentation/view_model/carOwner.dart';
-import 'package:carrental/features/home/presentation/view_model/carOwnerPhone.dart';
-import 'package:carrental/features/home/presentation/view_model/contractWith.dart';
-import 'package:carrental/features/customer/presentation/view_model/customerPhoneEntery.dart';
-import 'package:carrental/features/customer/presentation/view_model/customser.dart';
-import 'package:carrental/features/home/presentation/view_model/employee.dart';
+import 'package:carrental/core/models/carOwner.dart';
+import 'package:carrental/core/models/carOwnerPhone.dart';
+import 'package:carrental/core/models/contractWith.dart';
+import 'package:carrental/core/models/customerPhoneEntery.dart';
+import 'package:carrental/core/models/customser.dart';
+import 'package:carrental/core/models/employee.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -40,7 +40,9 @@ class SqlDb {
         Last_Name TEXT NOT NULL,
         Address TEXT NOT NULL,
         Driving_license TEXT NOT NULL,
-        Nat_ID INTEGER NOT NULL UNIQUE
+        Nat_ID INTEGER NOT NULL UNIQUE,
+        email TEXT NOT NULL UNIQUE,
+        password TEXT NOT NULL ,
       )
     ''');
 

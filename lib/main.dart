@@ -1,5 +1,9 @@
-import 'package:carrental/core/utils/app_router.dart';
+import 'package:carrental/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
+
+bool iScustomer = false;
+bool iSEmployee = false;
+bool isCarOwner=false;
 
 void main() {
   runApp(const CarRental());
@@ -10,10 +14,10 @@ class CarRental extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MaterialApp(
       title: 'Car Rental',
-      routerConfig: AppRouter.router,
       debugShowCheckedModeBanner: false,
+      home: const SplashView(),
       theme: ThemeData(),
     );
   }

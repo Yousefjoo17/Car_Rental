@@ -1,7 +1,6 @@
-import 'package:carrental/core/DB.dart';
+import 'package:carrental/core/models/customser.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/core/widgets/Custom_text_field.dart';
-import 'package:carrental/features/customer/presentation/view_model/customser.dart';
 import 'package:flutter/material.dart';
 
 class AddCustomerView extends StatelessWidget {
@@ -64,7 +63,7 @@ class AddCustomerView extends StatelessWidget {
             text: "add",
             ontap: () {
               //call here insert customer
-              SqlDb().insertCustomer(customer);
+              //SqlDb().insertCustomer(customer);
             },
             color: Colors.black,
           ),
@@ -73,7 +72,7 @@ class AddCustomerView extends StatelessWidget {
             text: "get all customsers",
             ontap: () async {
               //call here insert customer
-              await SqlDb().printAllCustomers();
+             // await SqlDb().printAllCustomers();
             },
             color: Colors.black,
           ),

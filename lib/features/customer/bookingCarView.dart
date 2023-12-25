@@ -1,9 +1,9 @@
 import 'package:carrental/constants.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
+import 'package:carrental/core/models/Date.dart';
 import 'package:carrental/core/utils/assets.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
-import 'package:carrental/features/customer/presentation/view_model/Date.dart';
-import 'package:carrental/features/customer/presentation/views/widgets/dateRow.dart';
+import 'package:carrental/features/customer/widgets/dateRow.dart';
 import 'package:flutter/material.dart';
 
 class BookingCarView extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:carrental/constants.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
-import 'package:carrental/features/customer/presentation/views/widgets/customCarCard.dart';
-import 'package:carrental/features/customer/presentation/views/widgets/selectionRow.dart';
+import 'package:carrental/features/customer/widgets/customCarCard.dart';
+import 'package:carrental/features/customer/widgets/selectionRow.dart';
 import 'package:flutter/material.dart';
 
 class CustomerHomeView extends StatefulWidget {

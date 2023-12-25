@@ -1,5 +1,5 @@
 import 'package:carrental/core/utils/assets.dart';
-import 'package:carrental/features/customer/presentation/views/bookingCarView.dart';
+import 'package:carrental/features/customer/bookingCarView.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
