@@ -1,10 +1,10 @@
-class ContractsEntry {
-  int ownerID;
-  int employeeID;
+class Contract {
+  int? ownerID;
+  int? employeeID;
 
-  ContractsEntry({
-   required this.ownerID,
-   required this.employeeID,
+  Contract({
+     this.ownerID,
+     this.employeeID,
   });
 
   Map<String, dynamic> toMap() {

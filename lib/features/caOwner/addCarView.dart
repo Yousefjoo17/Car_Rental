@@ -1,11 +1,10 @@
-import 'package:carrental/core/DB/DBCustomer.dart';
 import 'package:carrental/core/models/customser.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/core/widgets/Custom_text_field.dart';
 import 'package:flutter/material.dart';
 
-class AddCustomerView extends StatelessWidget {
-  const AddCustomerView({super.key, required this.customer});
+class AddCarView extends StatelessWidget {
+  const AddCarView({super.key, required this.customer});
   final Customer customer;
   @override
   Widget build(BuildContext context) {
@@ -19,16 +18,9 @@ class AddCustomerView extends StatelessWidget {
           ),
           const SizedBox(height: 30),
           CustomTextField(
-            hinttext: "Email",
+            hinttext: "ID",
             onchanged: (p0) {
-              customer.email = p0;
-            },
-          ),
-          const SizedBox(height: 30),
-          CustomTextField(
-            hinttext: "password",
-            onchanged: (p0) {
-              customer.password = p0;
+              customer.custId = int.parse(p0);
             },
           ),
           const SizedBox(height: 30),
@@ -70,7 +62,8 @@ class AddCustomerView extends StatelessWidget {
           CustomButton(
             text: "add",
             ontap: () {
-              DBCustomer.insertCustomer(customer);
+              //call here insert customer
+              //SqlDb().insertCustomer(customer);
             },
             color: Colors.black,
           ),
@@ -78,7 +71,8 @@ class AddCustomerView extends StatelessWidget {
           CustomButton(
             text: "get all customsers",
             ontap: () async {
-              await DBCustomer.printAllCustomersInfo();
+              //call here insert customer
+             // await SqlDb().printAllCustomers();
             },
             color: Colors.black,
           ),

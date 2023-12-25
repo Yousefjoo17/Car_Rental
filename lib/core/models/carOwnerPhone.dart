@@ -1,10 +1,10 @@
-class CarOwnerPhoneEntry {
-  int? phone;
+class CarOwnerPhone {
+  String? phone;
   int? ownerID;
 
-  CarOwnerPhoneEntry({
-    this.phone,
-    this.ownerID,
+  CarOwnerPhone({
+     this.phone,
+     this.ownerID,
   });
 
   Map<String, dynamic> toMap() {

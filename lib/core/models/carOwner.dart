@@ -1,30 +1,33 @@
-
-
 class CarOwner {
-  String firstName;
-  String lastName;
-  int ownerId;
-  String natId;
-  String address;
-  int paymentPerMonth;
+  int? ownerID;
+  String? firstName;
+  String? lastName;
+  String? natID;
+  String? address;
+  int? paymentPerMonth;
+  String? email;
+  String? password;
 
   CarOwner({
-    required this.firstName,
-    required this.lastName,
-    required this.ownerId,
-    required this.natId,
-    required this.address,
-    required this.paymentPerMonth,
+     this.ownerID,
+     this.firstName,
+     this.lastName,
+     this.natID,
+     this.address,
+     this.paymentPerMonth,
+     this.email,
+     this.password,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'First_Name': firstName,
       'Last_Name': lastName,
-      'Owner_ID': ownerId,
-      'Nat_ID': natId,
+      'Nat_ID': natID,
       'Address': address,
       'Payment_per_month': paymentPerMonth,
+      'email': email,
+      'password': password,
     };
   }
 }

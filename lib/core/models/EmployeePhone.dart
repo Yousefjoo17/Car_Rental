@@ -1,16 +1,16 @@
-class CustomerPhone {
+class EmployeePhone {
   String? phone;
-  int? custID;
+  int? employeeID;
 
-  CustomerPhone({
+  EmployeePhone({
      this.phone,
-     this.custID,
+     this.employeeID,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'Phone': phone,
-      'Cust_ID': custID,
+      'Employee_ID': employeeID,
     };
   }
 }

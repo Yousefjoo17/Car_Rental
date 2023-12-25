@@ -1,25 +1,30 @@
 class Employee {
-  int employeeID;
-  String address;
-  String firstName;
-  String lastName;
-  String natID;
+  int? employeeID;
+  String? firstName;
+  String? lastName;
+  String? natID;
+  String? address;
+  String? email;
+  String? password;
 
   Employee({
-   required this.employeeID,
-   required this.address,
-  required  this.firstName,
-   required this.lastName,
-   required this.natID,
+    this.employeeID,
+     this.firstName,
+     this.lastName,
+     this.natID,
+     this.address,
+     this.email,
+     this.password,
   });
 
   Map<String, dynamic> toMap() {
     return {
-      'Employee_ID': employeeID,
-      'Address': address,
       'First_Name': firstName,
       'Last_Name': lastName,
       'Nat_ID': natID,
+      'Address': address,
+      'email': email,
+      'password': password,
     };
   }
 }
