@@ -118,6 +118,37 @@ await db.execute('''
       )
     ''');
 
+    await db.execute('''
+      CREATE TABLE Rental_Agreement (
+        Rental_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        Return_city TEXT NOT NULL,
+        Pick_up_city TEXT NOT NULL,
+        Pick_up_date TEXT NOT NULL,
+        Return_date TEXT NOT NULL,
+        Rental_agreement_date TEXT NOT NULL,
+        Review TEXT,
+        Cust_ID INTEGER NOT NULL,
+        Car_ID INTEGER NOT NULL,
+        Employee_ID INTEGER NOT NULL,
+        FOREIGN KEY (Cust_ID) REFERENCES Customer(Cust_ID) ON DELETE NO ACTION ON UPDATE CASCADE, 
+        FOREIGN KEY (Car_ID) REFERENCES Vehicle(Car_ID) ON DELETE NO ACTION ON UPDATE CASCADE,
+        FOREIGN KEY (Employee_ID) REFERENCES Employee(Employee_ID) ON DELETE NO ACTION ON UPDATE CASCADE
+      )
+    ''');
+
+await db.execute('''
+      CREATE TABLE Payment (
+        Down_payment INTEGER NOT NULL,
+        Payment_date TEXT NOT NULL,
+        Pay_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        Full_amount INTEGER NOT NULL,
+        Damage_payment INTEGER NOT NULL,
+        Cust_ID INTEGER NOT NULL,
+        Rental_ID INTEGER NOT NULL,
+        FOREIGN KEY (Cust_ID) REFERENCES Customer(Cust_ID) ON DELETE NO ACTION ON UPDATE CASCADE,
+        FOREIGN KEY (Rental_ID) REFERENCES Rental_Agreement(Rental_ID) ON DELETE NO ACTION ON UPDATE CASCADE
+      )
+    ''');
     print("onCreate =======================================================================");
   }
    
