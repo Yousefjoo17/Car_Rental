@@ -2,18 +2,18 @@ import 'package:carrental/core/DB/DBTables.dart';
 import 'package:carrental/core/models/veihcle.dart';
 
 class DBVehicle {
-  Future<void> insertVehicle(Vehicle vehicle) async {
+ static Future<void> insertVehicle(Vehicle vehicle) async {
     final dbClient = await SqlDb().db;
     await dbClient!.insert('Vehicle', vehicle.toMap());
   }
 
-  Future<List<Vehicle>> getAllVehicles() async {
+ static Future<List<Vehicle>> getAllVehicles() async {
     final dbClient = await SqlDb().db;
     final List<Map<String, dynamic>> maps = await dbClient!.query('Vehicle');
     return List.generate(maps.length, (i) {
       return Vehicle(
         carID: maps[i]['Car_ID'],
-        availability: maps[i]['Availability'] == 1,
+        availability: maps[i]['Availability'],
         priceToRent: maps[i]['price_to_rent'],
         year: maps[i]['Year'],
         model: maps[i]['Model'],
@@ -26,7 +26,7 @@ class DBVehicle {
     });
   }
 
-  Future<void> printAllVehiclesInfo() async {
+ static Future<void> printAllVehiclesInfo() async {
     final vehicles = await getAllVehicles();
     vehicles.forEach((vehicle) {
       print('Car ID: ${vehicle.carID}');

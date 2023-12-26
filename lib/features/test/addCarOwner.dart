@@ -1,19 +1,18 @@
-import 'package:carrental/core/DB/DBVeihcle.dart';
-import 'package:carrental/core/models/veihcle.dart';
+import 'package:carrental/core/DB/DBCarOwners.dart';
+import 'package:carrental/core/models/carOwner.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/core/widgets/Custom_text_field.dart';
 import 'package:flutter/material.dart';
 
-class AddCarView extends StatefulWidget {
-  const AddCarView({super.key});
+class AddCarOwner extends StatefulWidget {
+  const AddCarOwner({super.key});
 
   @override
-  State<AddCarView> createState() => _AddCarViewState();
+  State<AddCarOwner> createState() => _AddCarViewState();
 }
 
-class _AddCarViewState extends State<AddCarView> {
-   Vehicle? vehicle=Vehicle();
-
+class _AddCarViewState extends State<AddCarOwner> {
+  CarOwner carOwner = CarOwner();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,57 +22,58 @@ class _AddCarViewState extends State<AddCarView> {
           children: [
             const SizedBox(height: 50),
             const Text(
-              " Insert a Car",
+              " Insert an Owner",
               style: TextStyle(fontSize: 30),
             ),
             const SizedBox(height: 30),
             CustomTextField(
-              hinttext: "model",
+              hinttext: "email",
               onchanged: (p0) {
-                vehicle!.model = p0;
+                carOwner.email = p0;
               },
             ),
             const SizedBox(height: 30),
             CustomTextField(
-              hinttext: "year",
+              hinttext: "first",
               onchanged: (p0) {
-                vehicle!.year = p0;
+                carOwner.firstName = p0;
               },
             ),
             const SizedBox(height: 30),
             CustomTextField(
-              hinttext: "Color",
+              hinttext: "last",
               onchanged: (p0) {
-                vehicle!.color = p0;
+                carOwner.lastName = p0;
               },
             ),
             const SizedBox(height: 30),
             CustomTextField(
               hinttext: "price for rent",
               onchanged: (p0) {
-                vehicle!.priceToRent = int.parse(p0);
+                carOwner.paymentPerMonth = int.parse(p0);
               },
             ),
             const SizedBox(height: 30),
             CustomTextField(
               hinttext: "Current city",
               onchanged: (p0) {
-                vehicle!.currentCity = p0;
+                carOwner.address = p0;
               },
             ),
             const SizedBox(height: 30),
             CustomTextField(
               hinttext: "registeration info",
               onchanged: (p0) {
-                vehicle!.registrationInformation = p0;
+                carOwner.password = p0;
+                 carOwner.natID = p0;
               },
             ),
             const SizedBox(height: 30),
             CustomButton(
               text: "add",
-              ontap: () async{
+              ontap: () async {
                 //call here insert customer
-                await DBVehicle.insertVehicle(vehicle!);
+                await DBCarOwner.insertCarOwner(carOwner);
               },
               color: Colors.black,
             ),
@@ -82,7 +82,7 @@ class _AddCarViewState extends State<AddCarView> {
               text: "get all customsers",
               ontap: () async {
                 //call here insert customer
-              await  DBVehicle.printAllVehiclesInfo();
+                await DBCarOwner.printAllCarOwnersInfo();
               },
               color: Colors.black,
             ),

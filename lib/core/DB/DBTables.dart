@@ -15,7 +15,7 @@ class SqlDb {
 
   intialDb() async {
     String databasepath = await getDatabasesPath();
-    String path = join(databasepath, 'CarRental1.db');
+    String path = join(databasepath, 'CarRental94.db');
     Database mydb = await openDatabase(path,
         onCreate: _onCreate, version: 1, onUpgrade: _onUpgrade);
     return mydb;
@@ -26,7 +26,7 @@ class SqlDb {
   }
 
   _onCreate(Database db, int version) async {
-    //customers table
+
    await db.execute('''
   CREATE TABLE Customer (
     Cust_ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -40,7 +40,6 @@ class SqlDb {
   )
 ''');
 
-//Car owners table
    await db.execute('''
       CREATE TABLE Car_Owner (
         Owner_ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -119,8 +118,7 @@ await db.execute('''
       )
     ''');
 
-
-    print("onCreate =====================================");
+    print("onCreate =======================================================================");
   }
    
 }

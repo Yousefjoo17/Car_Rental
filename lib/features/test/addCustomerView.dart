@@ -4,9 +4,16 @@ import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/core/widgets/Custom_text_field.dart';
 import 'package:flutter/material.dart';
 
-class AddCustomerView extends StatelessWidget {
-  const AddCustomerView({super.key, required this.customer});
-  final Customer customer;
+class AddCustomerView extends StatefulWidget {
+  const AddCustomerView({super.key});
+
+  @override
+  State<AddCustomerView> createState() => _AddCustomerViewState();
+}
+
+Customer customer = Customer();
+
+class _AddCustomerViewState extends State<AddCustomerView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +42,7 @@ class AddCustomerView extends StatelessWidget {
           CustomTextField(
             hinttext: "First name",
             onchanged: (p0) {
-              customer.firstName = p0;
+           customer.firstName = p0;
             },
           ),
           const SizedBox(height: 30),
@@ -49,21 +56,21 @@ class AddCustomerView extends StatelessWidget {
           CustomTextField(
             hinttext: "address",
             onchanged: (p0) {
-              customer.address = p0;
+            customer.address = p0;
             },
           ),
           const SizedBox(height: 30),
           CustomTextField(
             hinttext: "Driving licesnse",
             onchanged: (p0) {
-              customer.drivingLicense = p0;
+            customer.drivingLicense = p0;
             },
           ),
           const SizedBox(height: 30),
           CustomTextField(
             hinttext: "national ID",
             onchanged: (p0) {
-              customer.natId = p0;
+            customer.natId = p0;
             },
           ),
           const SizedBox(height: 30),

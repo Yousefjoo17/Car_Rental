@@ -1,25 +1,33 @@
+import 'package:carrental/core/DB/DBTables.dart';
 import 'package:carrental/core/models/customser.dart';
-import 'package:carrental/features/home/addCustomerView.dart';
 import 'package:carrental/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
 bool iScustomer = false;
 bool iSEmployee = false;
-bool isCarOwner=false;
-Customer customer=Customer();
-void main() {
+bool isCarOwner = false;
+late SqlDb sqlDb;
+
+Customer customer = Customer();
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
+
+  sqlDb = SqlDb();
+  await sqlDb.db;
+
   runApp(const CarRental());
 }
 
 class CarRental extends StatelessWidget {
-  const CarRental({super.key});
+  const CarRental({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Car Rental',
       debugShowCheckedModeBanner: false,
-      home:  AddCustomerView(customer: customer),
+      home:  const SplashView(),
       theme: ThemeData(),
     );
   }
