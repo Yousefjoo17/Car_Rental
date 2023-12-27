@@ -4,9 +4,10 @@ import 'package:carrental/core/utils/assets.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/core/widgets/Custom_text_field.dart';
 import 'package:carrental/features/admin/AdminHomeView.dart';
+import 'package:carrental/features/admin/addCarOwner.dart';
+import 'package:carrental/features/admin/addCustomerView.dart';
 import 'package:carrental/features/carOwner/CarOwnerHomeView.dart';
 import 'package:carrental/features/customer/CustomerHomeView.dart';
-import 'package:carrental/features/splash/presentation/views/registerView.dart';
 import 'package:carrental/main.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -111,12 +112,21 @@ class _LoginViewState extends State<LoginView> {
                       const SizedBox(width: 10),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const RegisterView(),
-                            ),
-                          );
+                          if (iscustomer) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const AddCustomerView()));
+                          } else if (isAdmin) {
+                            
+                          } else if (isCarOwner) {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const AddCarOwnerView()));
+                          }
                         },
                         child: const Text(
                           'Register ',

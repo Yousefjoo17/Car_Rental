@@ -6,9 +6,9 @@ class RentalAgreement {
   String? returnDate;
   String? rentalAgreementDate;
   String? review;
+  int? payment;
   int? custID;
   int? carID;
-  int? employeeID;
 
   RentalAgreement({
     this.rentalID,
@@ -18,9 +18,9 @@ class RentalAgreement {
     this.returnDate,
     this.rentalAgreementDate,
     this.review,
+    this.payment,
     this.custID,
     this.carID,
-    this.employeeID,
   });
 
   Map<String, dynamic> toMap() {
@@ -32,9 +32,9 @@ class RentalAgreement {
       'Return_date': returnDate,
       'Rental_agreement_date': rentalAgreementDate,
       'Review': review,
+      'Payment':payment,
       'Cust_ID': custID,
       'Car_ID': carID,
-      'Employee_ID': employeeID,
     };
   }
 }

@@ -1,6 +1,8 @@
 import 'package:carrental/constants.dart';
+import 'package:carrental/core/DB/DBRentalAgreement.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
 import 'package:carrental/core/models/Date.dart';
+import 'package:carrental/core/models/RentalAgreement.dart';
 import 'package:carrental/core/utils/assets.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/features/customer/widgets/dateRow.dart';
@@ -15,7 +17,7 @@ class BookingCarView extends StatefulWidget {
 
 class _BookingCarViewState extends State<BookingCarView> {
   DateClass dateClass = DateClass();
-
+  RentalAgreement rentalAgreement = RentalAgreement();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,10 +57,17 @@ class _BookingCarViewState extends State<BookingCarView> {
               CustomButton(
                   text: 'Rent',
                   ontap: () {
-                    print(dateClass.startYear);
-                    print(dateClass.startMonth);
-                    print(dateClass.endYear);
-                    print(dateClass.endMonth);
+                    rentalAgreement.carID = 1;
+                    rentalAgreement.custID = 1;
+                    rentalAgreement.pickUpCity = '2';
+                    rentalAgreement.pickUpDate = '2';
+                    rentalAgreement.rentalAgreementDate = '1';
+                    rentalAgreement.returnCity = 'k';
+                    rentalAgreement.returnDate = dateClass.endYear;
+                    rentalAgreement.review = 'good';
+                    rentalAgreement.payment = 1200;
+                    DBRentalAgreement.addRentalAgreement(rentalAgreement);
+                    DBRentalAgreement.printAllRentalAgreements();
                   },
                   color: kprimaryColor3)
             ],

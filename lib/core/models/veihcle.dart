@@ -1,6 +1,6 @@
 class Vehicle {
   int? carID;
-  bool? availability;
+  int? availability;
   int? priceToRent;
   String? year;
   String? model;
@@ -26,11 +26,11 @@ class Vehicle {
   Map<String, dynamic> toMap() {
     return {
       'Car_ID': carID,
-      'Availability': availability?? true, // Convert boolean to integer
+      'Availability': availability,
       'price_to_rent': priceToRent,
       'Year': year,
       'Model': model,
-      'No_KM': noKM?? 0,
+      'No_KM': noKM,
       'Color': color,
       'Current_City': currentCity,
       'Registration_information': registrationInformation,

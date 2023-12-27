@@ -12,8 +12,8 @@ class AddCarView extends StatefulWidget {
 }
 
 class _AddCarViewState extends State<AddCarView> {
-   Vehicle? vehicle=Vehicle();
-
+   Vehicle? vehicle=Vehicle(ownerID: 1,availability: 1,noKM: 0);
+    
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +79,7 @@ class _AddCarViewState extends State<AddCarView> {
             ),
             const SizedBox(height: 30),
             CustomButton(
-              text: "get all customsers",
+              text: "get all cars",
               ontap: () async {
                 //call here insert customer
               await  DBVehicle.printAllVehiclesInfo();

@@ -1,9 +1,8 @@
 import 'package:carrental/constants.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
-import 'package:carrental/core/utils/assets.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
-import 'package:carrental/features/admin/addCarOwner.dart';
-import 'package:carrental/features/admin/addCustomerView.dart';
+import 'package:carrental/features/admin/CarI_insertion_requests.dart';
+import 'package:carrental/features/admin/requiredBrandView.dart';
 import 'package:flutter/material.dart';
 
 class AdminHomeView extends StatelessWidget {
@@ -30,38 +29,31 @@ class AdminHomeView extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 130, child: Image.asset(AssetsData.car2)),
-              const SizedBox(height: 40),
-              CustomButton(
-                text: 'Insert Customer',
-                ontap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AddCustomerView()),
-                  );
-                },
-                color: kprimaryColor3,
-              ),
-              const SizedBox(height: 30),
-              CustomButton(
-                text: 'Insert Car Owner',
-                ontap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const AddCarOwnerView()),
-                  );
-                },
-                color: kprimaryColor3,
-              ),
               const SizedBox(height: 30),
               CustomButton(
                 text: 'Car insertion requests',
-                ontap: () {},
+                ontap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CarInsertionRequestsView()),
+                  );
+                },
                 color: kprimaryColor3,
               ),
               const SizedBox(height: 30),
+              const SizedBox(height: 30),
+              CustomButton(
+                text: 'required Brands',
+                ontap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RequiredBrandView()),
+                  );
+                },
+                color: kprimaryColor3,
+              ),
             ],
           ),
         ),

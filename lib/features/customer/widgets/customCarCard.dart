@@ -7,7 +7,7 @@ class CustomCarCard extends StatelessWidget {
   const CustomCarCard({
     super.key,
   });
-
+  
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
