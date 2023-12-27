@@ -3,8 +3,8 @@ import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
 import 'package:carrental/core/utils/assets.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/core/widgets/Custom_text_field.dart';
-import 'package:carrental/features/Employee/EmployeeHomeView.dart';
-import 'package:carrental/features/caOwner/CarOwnerHomeView.dart';
+import 'package:carrental/features/admin/AdminHomeView.dart';
+import 'package:carrental/features/carOwner/CarOwnerHomeView.dart';
 import 'package:carrental/features/customer/CustomerHomeView.dart';
 import 'package:carrental/features/splash/presentation/views/registerView.dart';
 import 'package:carrental/main.dart';
@@ -73,18 +73,18 @@ class _LoginViewState extends State<LoginView> {
                   CustomButton(
                     text: 'Log in',
                     ontap: () async {
-                      if (iScustomer) {
+                      if (iscustomer) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) => const CustomerHomeView(),
                           ),
                         );
-                      } else if (iSEmployee) {
+                      } else if (isAdmin) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const EmployeeHomeView(),
+                            builder: (context) => const AdminHomeView(),
                           ),
                         );
                       } else if (isCarOwner) {

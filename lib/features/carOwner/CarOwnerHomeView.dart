@@ -1,8 +1,8 @@
 import 'package:carrental/constants.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
-import 'package:carrental/features/caOwner/addCarView.dart';
-import 'package:carrental/features/caOwner/widgets/CarRegisterd.dart';
+import 'package:carrental/features/carOwner/addCarView.dart';
+import 'package:carrental/features/carOwner/widgets/CarRegisterd.dart';
 import 'package:flutter/material.dart';
 
 class CarOwnerHomeView extends StatelessWidget {

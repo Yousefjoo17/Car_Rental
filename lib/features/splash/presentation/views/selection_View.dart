@@ -43,8 +43,8 @@ class _SelectionViewState extends State<SelectionView> {
             CustomButton(
               text: "Customer",
               ontap: () {
-                iScustomer = true;
-                isCarOwner = iSEmployee = false;
+                iscustomer = true;
+                isCarOwner = isAdmin = false;
 
                 Navigator.push(
                   context,
@@ -55,10 +55,10 @@ class _SelectionViewState extends State<SelectionView> {
             ),
             const SizedBox(height: 60),
             CustomButton(
-              text: "Employee",
+              text: "Admin",
               ontap: () {
-                iSEmployee = true;
-                iScustomer = isCarOwner = false;
+                isAdmin = true;
+                iscustomer = isCarOwner = false;
 
                 Navigator.push(
                   context,
@@ -72,7 +72,7 @@ class _SelectionViewState extends State<SelectionView> {
               text: "Car Owner",
               ontap: () {
                 isCarOwner = true;
-                iScustomer = iSEmployee = false;
+                iscustomer = isAdmin = false;
 
                 Navigator.push(
                   context,

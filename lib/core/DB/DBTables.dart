@@ -149,6 +149,20 @@ await db.execute('''
         FOREIGN KEY (Rental_ID) REFERENCES Rental_Agreement(Rental_ID) ON DELETE NO ACTION ON UPDATE CASCADE
       )
     ''');
+
+
+     await db.execute('''
+      CREATE TABLE Maintenance (
+        Start_date TEXT NOT NULL,
+        End_Date TEXT NOT NULL,
+        Cost INTEGER NOT NULL,
+        Description TEXT NOT NULL,
+        Maintenace_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+        Car_ID INTEGER NOT NULL,
+        FOREIGN KEY (Car_ID) REFERENCES Vehicle(Car_ID) ON DELETE NO ACTION ON UPDATE CASCADE
+      )
+    ''');
+    
     print("onCreate =======================================================================");
   }
    

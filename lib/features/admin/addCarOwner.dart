@@ -4,14 +4,14 @@ import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/core/widgets/Custom_text_field.dart';
 import 'package:flutter/material.dart';
 
-class AddCarOwner extends StatefulWidget {
-  const AddCarOwner({super.key});
+class AddCarOwnerView extends StatefulWidget {
+  const AddCarOwnerView({super.key});
 
   @override
-  State<AddCarOwner> createState() => _AddCarViewState();
+  State<AddCarOwnerView> createState() => _AddCarViewState();
 }
 
-class _AddCarViewState extends State<AddCarOwner> {
+class _AddCarViewState extends State<AddCarOwnerView> {
   CarOwner carOwner = CarOwner();
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class _AddCarViewState extends State<AddCarOwner> {
               hinttext: "registeration info",
               onchanged: (p0) {
                 carOwner.password = p0;
-                 carOwner.natID = p0;
+                carOwner.natID = p0;
               },
             ),
             const SizedBox(height: 30),
