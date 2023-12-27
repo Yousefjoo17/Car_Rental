@@ -3,8 +3,15 @@ import 'package:carrental/features/admin/widgets/rowColorWidget.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class RequiredBrandView extends StatelessWidget {
-  const RequiredBrandView({super.key});
+class StatisticsView extends StatelessWidget {
+  const StatisticsView(
+      {super.key,
+      required this.names,
+      required this.counts,
+      required this.text});
+  final String text;
+  final List<String> names;
+  final List<num> counts;
 
   @override
   Widget build(BuildContext context) {
@@ -16,32 +23,35 @@ class RequiredBrandView extends StatelessWidget {
             child: Stack(
               alignment: Alignment.center,
               children: [
-                const Text(
-                  'Modals',
-                  style: TextStyle(fontSize: 30),
+                Text(
+                  text,
+                  style: const TextStyle(fontSize: 30),
                 ),
                 PieChart(
                   swapAnimationDuration: const Duration(milliseconds: 60),
                   PieChartData(
                     sections: [
-                      customPieChartSectionData(value: 16, color: Colors.red),
-                      customPieChartSectionData(value: 12, color: Colors.green),
                       customPieChartSectionData(
-                          value: 60, color: Colors.orange),
+                          value: counts[0].toDouble(), color: Colors.red),
                       customPieChartSectionData(
-                          value: 20, color: Colors.purple),
-                      customPieChartSectionData(value: 36, color: Colors.grey),
+                          value: counts[0].toDouble(), color: Colors.green),
+                      customPieChartSectionData(
+                          value: counts[0].toDouble(), color: Colors.orange),
+                      customPieChartSectionData(
+                          value: counts[0].toDouble(), color: Colors.purple),
+                      customPieChartSectionData(
+                          value: counts[0].toDouble(), color: Colors.grey),
                     ],
                   ),
                 ),
               ],
             ),
           ),
-          const RowColor(text: 'Audi', color: Colors.red),
-          const RowColor(text: 'BMW', color: Colors.green),
-          const RowColor(text: 'AU', color: Colors.orange),
-          const RowColor(text: 'Toy', color: Colors.purple),
-          const RowColor(text: 'Joj', color: Colors.grey),
+          RowColor(text: names[0], color: Colors.red),
+          RowColor(text: names[0], color: Colors.green),
+          RowColor(text: names[0], color: Colors.orange),
+          RowColor(text: names[0], color: Colors.purple),
+          RowColor(text: names[0], color: Colors.grey),
         ],
       ),
     );

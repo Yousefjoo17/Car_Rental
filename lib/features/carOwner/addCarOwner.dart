@@ -99,26 +99,23 @@ class _AddCarViewState extends State<AddCarOwnerView> {
                   CustomButton(
                     text: "Register",
                     ontap: () async {
-                        if (formkey.currentState!.validate()) {
-                          if (passwordAssertion == carOwner.password) {
-                            if (await DBCarOwner.isEmailFound(
-                                    carOwner.email!) ||
-                                await DBCarOwner.isNatIdFound(
-                                    carOwner.natID!)) {
-                              showmySnackBar(context,
-                                  "Either Email or Id is inserted before");
-                            }
-                          } else {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const CarOwnerHomeView()));
-                            DBCarOwner.insertCarOwner(carOwner);
-                            await DBCarOwner.printAllCarOwnersInfo();
+                      if (formkey.currentState!.validate()) {
+                        if (passwordAssertion == carOwner.password) {
+                          if (await DBCarOwner.isEmailFound(carOwner.email!) ||
+                              await DBCarOwner.isNatIdFound(carOwner.natID!)) {
+                            showmySnackBar(context,
+                                "Either Email or Id is inserted before");
                           }
+                        } else {
+                          
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CarOwnerHomeView()));
+                          DBCarOwner.insertCarOwner(carOwner);
+                          await DBCarOwner.printAllCarOwnersInfo();
                         }
-                       else {
+                      } else {
                         showmySnackBar(context, "Password mismatch");
                       }
                     },

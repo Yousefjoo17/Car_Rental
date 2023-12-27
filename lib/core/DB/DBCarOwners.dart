@@ -1,5 +1,6 @@
 import 'package:carrental/core/DB/DBTables.dart';
 import 'package:carrental/core/models/carOwner.dart';
+import 'package:carrental/core/models/veihcle.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DBCarOwner {
@@ -79,5 +80,29 @@ class DBCarOwner {
     } else {
       return null; // Car owner not found
     }
+  }
+
+  static Future<List<Vehicle>> getVehiclesByOwnerId(int ownerID) async {
+    final dbClient = await SqlDb().db;
+    final List<Map<String, dynamic>> maps = await dbClient!.query(
+      'Vehicle',
+      where: 'Owner_ID = ?',
+      whereArgs: [ownerID],
+    );
+
+    return List.generate(maps.length, (i) {
+      return Vehicle(
+        carID: maps[i]['Car_ID'],
+        availability: maps[i]['Availability'],
+        priceToRent: maps[i]['price_to_rent'],
+        year: maps[i]['Year'],
+        model: maps[i]['Model'],
+        noKM: maps[i]['No_KM'],
+        color: maps[i]['Color'],
+        currentCity: maps[i]['Current_City'],
+        registrationInformation: maps[i]['Registration_information'],
+        ownerID: maps[i]['Owner_ID'],
+      );
+    });
   }
 }

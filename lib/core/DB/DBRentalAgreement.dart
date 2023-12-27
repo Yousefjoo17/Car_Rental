@@ -49,4 +49,102 @@ class DBRentalAgreement {
       }
     }
   }
+
+  static Future<List<String>> getTopFiveUsedCarModels() async {
+    final dbClient = await SqlDb().db;
+
+    final List<Map<String, dynamic>> maps = await dbClient!.rawQuery('''
+      SELECT Model, COUNT(Model) as ModelCount
+      FROM Rental_Agreement
+      JOIN Vehicle ON Rental_Agreement.Car_ID = Vehicle.Car_ID
+      GROUP BY Model
+      ORDER BY ModelCount DESC
+      LIMIT 5
+    ''');
+
+    return List.generate(maps.length, (i) {
+      return maps[i]['Model'] as String;
+    });
+  }
+
+  static Future<List<int>> getTopFiveUsedCarModelCounts() async {
+    final dbClient = await SqlDb().db;
+
+    final List<Map<String, dynamic>> maps = await dbClient!.rawQuery('''
+      SELECT Model, COUNT(Model) as ModelCount
+      FROM Rental_Agreement
+      JOIN Vehicle ON Rental_Agreement.Car_ID = Vehicle.Car_ID
+      GROUP BY Model
+      ORDER BY ModelCount DESC
+      LIMIT 5
+    ''');
+
+    return List.generate(maps.length, (i) {
+      return maps[i]['ModelCount'] as int;
+    });
+  }
+
+   static Future<List<String>> getTopFiveUsedCities() async {
+    final dbClient = await SqlDb().db;
+
+    final List<Map<String, dynamic>> maps = await dbClient!.rawQuery('''
+      SELECT Return_city, COUNT(Return_city) as CityCount
+      FROM Rental_Agreement
+      GROUP BY Return_city
+      ORDER BY CityCount DESC
+      LIMIT 5
+    ''');
+
+    return List.generate(maps.length, (i) {
+      return maps[i]['Return_city'] as String;
+    });
+  }
+
+  static Future<List<int>> getTopFiveUsedCityCounts() async {
+    final dbClient = await SqlDb().db;
+
+    final List<Map<String, dynamic>> maps = await dbClient!.rawQuery('''
+      SELECT Return_city, COUNT(Return_city) as CityCount
+      FROM Rental_Agreement
+      GROUP BY Return_city
+      ORDER BY CityCount DESC
+      LIMIT 5
+    ''');
+
+    return List.generate(maps.length, (i) {
+      return maps[i]['CityCount'] as int;
+    });
+  }
+
+  static Future<List<String>> getTopFiveUsedMonths() async {
+    final dbClient = await SqlDb().db;
+
+    final List<Map<String, dynamic>> maps = await dbClient!.rawQuery('''
+      SELECT strftime('%Y-%m', Rental_agreement_date) as Month, COUNT(strftime('%Y-%m', Rental_agreement_date)) as MonthCount
+      FROM Rental_Agreement
+      GROUP BY Month
+      ORDER BY MonthCount DESC
+      LIMIT 5
+    ''');
+
+    return List.generate(maps.length, (i) {
+      return maps[i]['Month'] as String;
+    });
+  }
+
+  static Future<List<int>> getTopFiveUsedMonthCounts() async {
+    final dbClient = await SqlDb().db;
+
+    final List<Map<String, dynamic>> maps = await dbClient!.rawQuery('''
+      SELECT strftime('%Y-%m', Rental_agreement_date) as Month, COUNT(strftime('%Y-%m', Rental_agreement_date)) as MonthCount
+      FROM Rental_Agreement
+      GROUP BY Month
+      ORDER BY MonthCount DESC
+      LIMIT 5
+    ''');
+
+    return List.generate(maps.length, (i) {
+      return maps[i]['MonthCount'] as int;
+    });
+  }
 }

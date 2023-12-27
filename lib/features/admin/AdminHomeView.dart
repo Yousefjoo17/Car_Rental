@@ -1,7 +1,7 @@
 import 'package:carrental/constants.dart';
+import 'package:carrental/core/DB/DBRentalAgreement.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
-import 'package:carrental/features/admin/CarI_insertion_requests.dart';
 import 'package:carrental/features/admin/StatisticsView.dart';
 import 'package:flutter/material.dart';
 
@@ -31,48 +31,63 @@ class AdminHomeView extends StatelessWidget {
               ),
               const SizedBox(height: 50),
               CustomButton(
-                text: 'Car insertion requests',
-                ontap: () {
+                text: ' modals',
+                ontap: () async {
+                  final List<String> mostUsedModels =
+                      await DBRentalAgreement.getTopFiveUsedCarModels();
+                  final List<int> modelCounts =
+                      await DBRentalAgreement.getTopFiveUsedCarModelCounts();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const CarInsertionRequestsView()),
+                      builder: (context) => StatisticsView(
+                        names: mostUsedModels,
+                        counts: modelCounts,
+                        text: ' Modals',
+                      ),
+                    ),
                   );
                 },
                 color: kprimaryColor3,
               ),
               const SizedBox(height: 40),
               CustomButton(
-                text: 'required modals',
-                ontap: () {
+                text: ' cities',
+                ontap: () async {
+                  final List<String> mostUsedModels =
+                      await DBRentalAgreement.getTopFiveUsedCities();
+                  final List<int> modelCounts =
+                      await DBRentalAgreement.getTopFiveUsedCityCounts();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const RequiredBrandView()),
+                      builder: (context) => StatisticsView(
+                        names: mostUsedModels,
+                        counts: modelCounts,
+                        text: ' Cities',
+                      ),
+                    ),
                   );
                 },
                 color: kprimaryColor3,
               ),
               const SizedBox(height: 40),
               CustomButton(
-                text: 'most required Cities',
-                ontap: () {
+                text: ' Seasons',
+                ontap: () async {
+                  final List<String> mostUsedModels =
+                      await DBRentalAgreement.getTopFiveUsedMonths();
+                  final List<int> modelCounts =
+                      await DBRentalAgreement.getTopFiveUsedMonthCounts();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const RequiredBrandView()),
-                  );
-                },
-                color: kprimaryColor3,
-              ),
-              const SizedBox(height: 40),
-              CustomButton(
-                text: 'Highest Season ',
-                ontap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const RequiredBrandView()),
+                      builder: (context) => StatisticsView(
+                        names: mostUsedModels,
+                        counts: modelCounts,
+                        text: ' Seasons',
+                      ),
+                    ),
                   );
                 },
                 color: kprimaryColor3,

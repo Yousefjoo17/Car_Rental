@@ -79,10 +79,10 @@ class _BookingCarViewState extends State<BookingCarView> {
                           rentalAgreement.pickUpCity =
                               widget.vehicle.currentCity;
                           rentalAgreement.pickUpDate =
-                              '${dateClass.startMonth}/${dateClass.startYear}';
+                              '${dateClass.startMonth}';
                           rentalAgreement.rentalAgreementDate = '1';
                           rentalAgreement.returnDate =
-                              '${dateClass.endMonth}/${dateClass.endYear}';
+                              '${dateClass.endMonth}';
                           rentalAgreement.review = 'good';
                           rentalAgreement.payment = widget.vehicle.priceToRent;
                           DBRentalAgreement.addRentalAgreement(rentalAgreement);

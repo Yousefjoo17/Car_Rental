@@ -1,22 +1,22 @@
+import 'package:carrental/core/models/veihcle.dart';
 import 'package:flutter/material.dart';
 
 class CarRegisterd extends StatelessWidget {
-  const CarRegisterd({super.key});
-
+  const CarRegisterd({super.key, required this.vehicle});
+  final Vehicle vehicle;
   @override
   Widget build(BuildContext context) {
-    return const ListTile(
+    return ListTile(
       leading: Icon(
         Icons.car_rental,
         size: 50,
       ),
-      title: Text("BMW"),
+      title: Text(vehicle.model!),
       subtitle: Column(
         children: [
-          Text('Year'),
-          Text('Model'),
-          Text('No km'),
-          Text('Current_City'),
+          Text(vehicle.year!),
+          Text(vehicle.priceToRent.toString()),
+          Text(vehicle.currentCity!),
         ],
       ),
     );
