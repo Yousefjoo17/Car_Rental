@@ -43,7 +43,7 @@ class AdminHomeView extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               CustomButton(
-                text: 'required Brands',
+                text: 'required modals',
                 ontap: () {
                   Navigator.push(
                     context,

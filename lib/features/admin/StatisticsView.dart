@@ -17,7 +17,7 @@ class RequiredBrandView extends StatelessWidget {
               alignment: Alignment.center,
               children: [
                 const Text(
-                  'Brands',
+                  'Modals',
                   style: TextStyle(fontSize: 30),
                 ),
                 PieChart(

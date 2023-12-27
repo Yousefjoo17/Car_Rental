@@ -16,7 +16,10 @@ class CustomCarCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const BookingCarView()),
+          MaterialPageRoute(
+              builder: (context) => BookingCarView(
+                    vehicle: vehicle,
+                  )),
         );
       },
       child: Stack(

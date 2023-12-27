@@ -1,7 +1,9 @@
 import 'package:carrental/constants.dart';
+import 'package:carrental/core/DB/DBCarOwners.dart';
 import 'package:carrental/core/DB/DBCustomer.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
 import 'package:carrental/core/methods/show_snack_bar.dart';
+import 'package:carrental/core/models/Admin.dart';
 import 'package:carrental/core/utils/assets.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/core/widgets/Custom_text_field.dart';
@@ -96,6 +98,8 @@ class _LoginViewState extends State<LoginView> {
                             if (await DBCustomer
                                 .isCustomerFoundByEmailAndPassword(
                                     email!, password!)) {
+                              currCustomer =
+                                  await DBCustomer.getCustomerByEmail(email!);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -108,12 +112,22 @@ class _LoginViewState extends State<LoginView> {
                             }
                           }
                         } else if (isAdmin) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const AdminHomeView(),
-                            ),
-                          );
+                          print(email);
+                          print(admin!.email);
+                          print(password);
+                          print(admin!.password);
+                          if (email == admin!.email &&
+                              password == admin!.password) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AdminHomeView(),
+                              ),
+                            );
+                          } else {
+                            showmySnackBar(context,
+                                "You'are not the Admin,YOU ARE a THIEVE");
+                          }
                         } else if (isCarOwner) {
                           if (formkey.currentState!.validate()) {
                             bool found =
@@ -121,6 +135,8 @@ class _LoginViewState extends State<LoginView> {
                                         context)
                                     .isUserFound(email!, password!);
                             if (found) {
+                              currCarOwner =
+                                  await DBCarOwner.getCarOwnerByEmail(email!);
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

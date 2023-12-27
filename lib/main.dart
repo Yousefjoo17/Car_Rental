@@ -1,4 +1,6 @@
 import 'package:carrental/core/DB/DBTables.dart';
+import 'package:carrental/core/models/Admin.dart';
+import 'package:carrental/core/models/carOwner.dart';
 import 'package:carrental/core/models/customser.dart';
 import 'package:carrental/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
@@ -12,9 +14,13 @@ bool isAdmin = false;
 bool isCarOwner = false;
 late SqlDb sqlDb;
 
-Customer customer = Customer();
+Customer? currCustomer = Customer();
+CarOwner? currCarOwner = CarOwner();
+Admin? admin = Admin();
 
 void main() async {
+  admin!.email = '1';
+  admin!.password = '1';
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
 
   sqlDb = SqlDb();

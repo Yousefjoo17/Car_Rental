@@ -69,4 +69,29 @@ class DBCustomer {
     );
     return maps.isNotEmpty;
   }
+
+
+  static Future<Customer?> getCustomerByEmail(String email) async {
+    final dbClient = await SqlDb().db;
+    final List<Map<String, dynamic>> maps = await dbClient!.query(
+      'Customer',
+      where: 'Email = ?',
+      whereArgs: [email],
+    );
+
+    if (maps.isNotEmpty) {
+      return Customer(
+        custId: maps[0]['Cust_ID'],
+        firstName: maps[0]['First_Name'],
+        lastName: maps[0]['Last_Name'],
+        address: maps[0]['Address'],
+        drivingLicense: maps[0]['Driving_license'],
+        natId: maps[0]['Nat_ID'],
+        email: maps[0]['Email'],
+        password: maps[0]['password'],
+      );
+    } else {
+      return null; // Customer not found
+    }
+  }
 }
