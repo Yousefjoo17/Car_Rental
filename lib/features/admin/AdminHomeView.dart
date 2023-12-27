@@ -29,7 +29,7 @@ class AdminHomeView extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 50),
               CustomButton(
                 text: 'Car insertion requests',
                 ontap: () {
@@ -41,10 +41,33 @@ class AdminHomeView extends StatelessWidget {
                 },
                 color: kprimaryColor3,
               ),
-              const SizedBox(height: 30),
-              const SizedBox(height: 30),
+              const SizedBox(height: 40),
               CustomButton(
                 text: 'required Brands',
+                ontap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RequiredBrandView()),
+                  );
+                },
+                color: kprimaryColor3,
+              ),
+              const SizedBox(height: 40),
+              CustomButton(
+                text: 'most required Cities',
+                ontap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RequiredBrandView()),
+                  );
+                },
+                color: kprimaryColor3,
+              ),
+              const SizedBox(height: 40),
+              CustomButton(
+                text: 'Highest Season ',
                 ontap: () {
                   Navigator.push(
                     context,

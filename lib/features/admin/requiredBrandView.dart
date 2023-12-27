@@ -25,14 +25,12 @@ class RequiredBrandView extends StatelessWidget {
                   PieChartData(
                     sections: [
                       customPieChartSectionData(value: 16, color: Colors.red),
-                      customPieChartSectionData(value: 16, color: Colors.green),
+                      customPieChartSectionData(value: 12, color: Colors.green),
                       customPieChartSectionData(
-                          value: 16, color: Colors.orange),
+                          value: 60, color: Colors.orange),
                       customPieChartSectionData(
-                          value: 16, color: Colors.purple),
-                      customPieChartSectionData(value: 16, color: Colors.grey),
-                      customPieChartSectionData(
-                          value: 16, color: Colors.yellow),
+                          value: 20, color: Colors.purple),
+                      customPieChartSectionData(value: 36, color: Colors.grey),
                     ],
                   ),
                 ),
@@ -42,7 +40,6 @@ class RequiredBrandView extends StatelessWidget {
           const RowColor(text: 'Audi', color: Colors.red),
           const RowColor(text: 'BMW', color: Colors.green),
           const RowColor(text: 'AU', color: Colors.orange),
-          const RowColor(text: 'Gc', color: Colors.yellow),
           const RowColor(text: 'Toy', color: Colors.purple),
           const RowColor(text: 'Joj', color: Colors.grey),
         ],

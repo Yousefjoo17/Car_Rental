@@ -14,12 +14,12 @@ class RowColor extends StatelessWidget {
             const SizedBox(width: 145),
             CircleAvatar(
               backgroundColor: color,
-              radius: 16,
+              radius: 12,
             ),
             const SizedBox(width: 24),
             Text(
               text,
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             )
           ],
         ),
