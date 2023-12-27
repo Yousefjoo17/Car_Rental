@@ -1,5 +1,6 @@
 import 'package:carrental/core/DB/DBTables.dart';
 import 'package:carrental/core/models/carOwner.dart';
+import 'package:sqflite/sqflite.dart';
 class DBCarOwner {
 static  Future<void> insertCarOwner(CarOwner carOwner) async {
     final dbClient = await SqlDb().db;
@@ -36,6 +37,26 @@ static  Future<List<CarOwner>> getAllCarOwners() async {
       print('Password: ${carOwner.password}\n');
     });
   }
+
+static Future<bool> isEmailFound(String email) async {
+    final dbClient = await SqlDb().db;
+    final count = Sqflite.firstIntValue(await dbClient!.rawQuery(
+      'SELECT COUNT(*) FROM Car_Owner WHERE email = ?',
+      [email],
+    ));
+    return count! > 0;
+  }
+
+ static Future<bool> isNatIdFound(String natId) async {
+    final dbClient = await SqlDb().db;
+    final count = Sqflite.firstIntValue(await dbClient!.rawQuery(
+      'SELECT COUNT(*) FROM Car_Owner WHERE Nat_ID = ?',
+      [natId],
+    ));
+    return count! > 0;
+  }
+
+
 
 }
 

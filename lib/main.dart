@@ -2,6 +2,10 @@ import 'package:carrental/core/DB/DBTables.dart';
 import 'package:carrental/core/models/customser.dart';
 import 'package:carrental/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:carrental/features/carOwner/CarOwnwerauth/CarOwnerauth_cubit.dart';
+
+// Other imports...
 
 bool iscustomer = false;
 bool isAdmin = false;
@@ -24,11 +28,16 @@ class CarRental extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Car Rental',
-      debugShowCheckedModeBanner: false,
-      home: const SplashView(),
-      theme: ThemeData(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => CarOwnerAuthCubit()),
+      ],
+      child: MaterialApp(
+        title: 'Car Rental',
+        debugShowCheckedModeBanner: false,
+        home: const SplashView(),
+        theme: ThemeData(),
+      ),
     );
   }
 }

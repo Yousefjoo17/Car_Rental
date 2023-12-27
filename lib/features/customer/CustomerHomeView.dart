@@ -1,5 +1,7 @@
 import 'package:carrental/constants.dart';
+import 'package:carrental/core/DB/DBVeihcle.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
+import 'package:carrental/core/models/veihcle.dart';
 import 'package:carrental/features/customer/widgets/customCarCard.dart';
 import 'package:carrental/features/customer/widgets/selectionRow.dart';
 import 'package:flutter/material.dart';
@@ -12,16 +14,33 @@ class CustomerHomeView extends StatefulWidget {
 }
 
 class _CustomerHomeViewState extends State<CustomerHomeView> {
-  String? citydropDownValue = 'all';
-  List<String> cityList = ['all', 'cone', 'ctwo', 'tchree', 'fcour', 'cfive'];
-  String? modaldropDownValue = 'all';
-  List<String> modalList = ['all', 'mone', 'mtwo', 'mthree', 'mfour', 'mfive'];
-  String? yeardropDownValue = 'all';
-  List<String> yearList = ['all', 'yone', 'ytwo', 'ythree', 'yfour', 'yfive'];
-  String? colordropDownValue = 'all';
-  List<String> colorList = ['all', 'vone', 'vtwo', 'vthree', 'vfour', 'vfive'];
-  String? branddropDownValue = 'all';
-  List<String> brandList = ['all', 'bone', 'btwo', 'tbhree', 'fbour', 'bfive'];
+  String? defaul = 'all          ';
+  String? citydropDownValue = 'all          ';
+  List<String> cityList = [];
+  String? modaldropDownValue = 'all          ';
+  List<String> modalList = [];
+  String? yeardropDownValue = 'all          ';
+  List<String> yearList = [];
+  String? colordropDownValue = 'all          ';
+  List<String> colorList = [];
+  List<Vehicle> vehicles = [];
+
+  @override
+  void initState() {
+    Future.delayed(const Duration(seconds: 0), () async {
+      cityList = await DBVehicle.getAllCities();
+      cityList.insert(0, 'all          ');
+      modalList = await DBVehicle.getAllModals();
+      modalList.insert(0, 'all          ');
+      yearList = await DBVehicle.getAllYears();
+      yearList.insert(0, 'all          ');
+      colorList = await DBVehicle.getAllColors();
+      colorList.insert(0, 'all          ');
+      vehicles = await DBVehicle.getAllVehicles();
+      setState(() {});
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,50 +69,64 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                 dropDownval: citydropDownValue!,
                 itemList: cityList,
                 name: "city",
-                onChanged: (p0) {
+                onChanged: (p0) async {
+                    vehicles = await DBVehicle.getVehiclesByCriteria(
+                      city: p0,
+                      color: colordropDownValue,
+                      modal: modaldropDownValue,
+                      year: yeardropDownValue);
                   setState(() {
                     citydropDownValue = p0;
                   });
+                
                 },
               ),
               SelectionRow(
                 dropDownval: modaldropDownValue!,
                 itemList: modalList,
                 name: "modal",
-                onChanged: (p0) {
+                onChanged: (p0) async {
+                   vehicles = await DBVehicle.getVehiclesByCriteria(
+                      city: citydropDownValue,
+                      color: colordropDownValue,
+                      modal: p0,
+                      year: yeardropDownValue);
                   setState(() {
                     modaldropDownValue = p0;
                   });
+                 
                 },
               ),
               SelectionRow(
                 dropDownval: colordropDownValue!,
                 itemList: colorList,
                 name: "color",
-                onChanged: (p0) {
+                onChanged: (p0) async {
+                   vehicles = await DBVehicle.getVehiclesByCriteria(
+                      city: citydropDownValue,
+                      color: p0,
+                      modal: modaldropDownValue,
+                      year: yeardropDownValue);
                   setState(() {
                     colordropDownValue = p0;
                   });
-                },
-              ),
-              SelectionRow(
-                dropDownval: branddropDownValue!,
-                itemList: brandList,
-                name: "Brand",
-                onChanged: (p0) {
-                  setState(() {
-                    branddropDownValue = p0;
-                  });
+                 
                 },
               ),
               SelectionRow(
                 dropDownval: yeardropDownValue!,
                 itemList: yearList,
                 name: "year",
-                onChanged: (p0) {
+                onChanged: (p0) async {
+                   vehicles = await DBVehicle.getVehiclesByCriteria(
+                      city: citydropDownValue,
+                      color: colordropDownValue,
+                      modal: modaldropDownValue,
+                      year: p0);
                   setState(() {
                     yeardropDownValue = p0;
                   });
+                  
                 },
               ),
               SliverGrid(
@@ -105,8 +138,10 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                 ),
                 delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                  return const CustomCarCard();
-                }, childCount: 20),
+                  return CustomCarCard(
+                    vehicle: vehicles[index],
+                  );
+                }, childCount: vehicles.length),
               ),
             ],
           ),

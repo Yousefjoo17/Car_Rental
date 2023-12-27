@@ -38,4 +38,35 @@ class DBCustomer {
       print('Password: ${customer.password}\n');
     });
   }
+
+  static Future<bool> isCustomerFoundByEmailAndPassword(
+      String email, String password) async {
+    final dbClient = await SqlDb().db;
+    final List<Map<String, dynamic>> maps = await dbClient!.query(
+      'Customer',
+      where: 'Email = ? AND password = ?',
+      whereArgs: [email, password],
+    );
+    return maps.isNotEmpty;
+  }
+
+  static Future<bool> isEmailFound(String email) async {
+    final dbClient = await SqlDb().db;
+    final List<Map<String, dynamic>> maps = await dbClient!.query(
+      'Customer',
+      where: 'Email = ?',
+      whereArgs: [email],
+    );
+    return maps.isNotEmpty;
+  }
+
+  static Future<bool> isNatIdFound(String natId) async {
+    final dbClient = await SqlDb().db;
+    final List<Map<String, dynamic>> maps = await dbClient!.query(
+      'Customer',
+      where: 'Nat_ID = ?',
+      whereArgs: [natId],
+    );
+    return maps.isNotEmpty;
+  }
 }

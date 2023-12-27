@@ -1,3 +1,4 @@
+import 'package:carrental/core/models/veihcle.dart';
 import 'package:carrental/core/utils/assets.dart';
 import 'package:carrental/features/customer/bookingCarView.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +7,9 @@ import 'package:flutter/material.dart';
 class CustomCarCard extends StatelessWidget {
   const CustomCarCard({
     super.key,
+    required this.vehicle,
   });
-  
+  final Vehicle vehicle;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,8 +23,6 @@ class CustomCarCard extends StatelessWidget {
         clipBehavior: Clip.none,
         children: [
           Container(
-            //height: 120,
-            //width: 200,
             decoration: BoxDecoration(boxShadow: [
               BoxShadow(
                 blurRadius: 20,
@@ -31,27 +31,33 @@ class CustomCarCard extends StatelessWidget {
                 offset: const Offset(5, 0),
               )
             ]),
-            child: const Card(
+            child: Card(
               elevation: 10,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      r'2000$ pm',
-                      style: TextStyle(color: Colors.grey, fontSize: 15),
+                    Row(
+                      children: [
+                        Text(
+                          '${vehicle.priceToRent}',
+                        ),
+                        const Text(r' $'),
+                      ],
                     ),
-                    SizedBox(height: 3),
+                    Text(vehicle.currentCity!),
+                    const SizedBox(height: 3),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'BMW',
-                          style: TextStyle(fontSize: 16),
+                          vehicle.model!,
+                          style: const TextStyle(fontSize: 16),
                         ),
-                        Icon(
+                        const Icon(
                           Icons.favorite,
                           color: Colors.red,
                         )

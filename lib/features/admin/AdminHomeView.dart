@@ -2,7 +2,7 @@ import 'package:carrental/constants.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/features/admin/CarI_insertion_requests.dart';
-import 'package:carrental/features/admin/requiredBrandView.dart';
+import 'package:carrental/features/admin/StatisticsView.dart';
 import 'package:flutter/material.dart';
 
 class AdminHomeView extends StatelessWidget {
