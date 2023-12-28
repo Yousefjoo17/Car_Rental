@@ -1,15 +1,14 @@
 import 'package:carrental/core/models/veihcle.dart';
-import 'package:carrental/core/utils/assets.dart';
 import 'package:carrental/features/customer/bookingCarView.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class CustomCarCard extends StatelessWidget {
   const CustomCarCard({
     super.key,
-    required this.vehicle,
+    required this.vehicle, required this.src,
   });
   final Vehicle vehicle;
+  final String src;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -76,7 +75,7 @@ class CustomCarCard extends StatelessWidget {
             //top: -20,
             bottom: 70,
             child: Image.asset(
-              AssetsData.logo,
+              src,
               height: 60,
             ),
           ),

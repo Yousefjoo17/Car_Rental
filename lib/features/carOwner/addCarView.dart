@@ -3,6 +3,7 @@ import 'package:carrental/core/methods/show_snack_bar.dart';
 import 'package:carrental/core/models/veihcle.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/core/widgets/Custom_text_field.dart';
+import 'package:carrental/main.dart';
 import 'package:flutter/material.dart';
 
 class AddCarView extends StatefulWidget {
@@ -13,7 +14,8 @@ class AddCarView extends StatefulWidget {
 }
 
 class _AddCarViewState extends State<AddCarView> {
-  Vehicle? vehicle = Vehicle(ownerID: 1, availability: 1, noKM: 0);
+  Vehicle? vehicle =
+      Vehicle(ownerID: currCarOwner!.ownerID, availability: 1, noKM: 0);
   GlobalKey<FormState> formkey = GlobalKey();
 
   @override
@@ -80,7 +82,7 @@ class _AddCarViewState extends State<AddCarView> {
                   ontap: () async {
                     if (formkey.currentState!.validate()) {
                       showmySnackBar(context, "inserted succeffully ");
-                      // Navigator.pop(context);
+                      Navigator.pop(context);
                       await DBVehicle.insertVehicle(vehicle!);
                       await DBVehicle.printAllVehiclesInfo();
                     }

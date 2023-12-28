@@ -6,6 +6,7 @@ import 'package:carrental/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:carrental/features/carOwner/CarOwnwerauth/CarOwnerauth_cubit.dart';
+import 'package:sqflite/sqflite.dart';
 
 // Other imports...
 
@@ -23,8 +24,11 @@ void main() async {
   admin!.password = '1';
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter is initialized
 
-  sqlDb = SqlDb();
-  await sqlDb.db;
+  SqlDb sqlDb = SqlDb();
+  Database? db = await sqlDb.db;
+
+
+
 
   runApp(const CarRental());
 }

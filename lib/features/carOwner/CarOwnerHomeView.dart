@@ -16,7 +16,7 @@ class CarOwnerHomeView extends StatefulWidget {
 }
 
 class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
-  List<Vehicle> Vechicles = [];
+  List<Vehicle> vechicles = [];
   @override
   void initState() {
     setState(() {
@@ -26,7 +26,8 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
   }
 
   Future<void> fetch() async {
-    Vechicles = await DBCarOwner.getVehiclesByOwnerId(currCarOwner!.ownerID!);
+    vechicles = await DBCarOwner.getVehiclesByOwnerId(currCarOwner!.ownerID!);
+    print("length ${vechicles.length}");
     setState(() {});
   }
 
@@ -54,10 +55,10 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
               SizedBox(
                 height: 300,
                 child: ListView.builder(
-                  itemCount: Vechicles.length,
+                  itemCount: vechicles.length,
                   itemBuilder: (BuildContext context, int index) {
                     return CarRegisterd(
-                      vehicle: Vechicles[index],
+                      vehicle: vechicles[index],
                     );
                   },
                 ),

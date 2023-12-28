@@ -4,6 +4,7 @@ import 'package:carrental/core/models/carOwner.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
 import 'package:carrental/core/widgets/Custom_text_field.dart';
 import 'package:carrental/features/carOwner/CarOwnerHomeView.dart';
+import 'package:carrental/main.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
@@ -50,6 +51,7 @@ class _AddCarViewState extends State<AddCarOwnerView> {
                     onchanged: (p0) {
                       carOwner.password = p0;
                     },
+                    obscureText: true,
                   ),
                   const SizedBox(height: 15),
                   CustomTextField(
@@ -77,8 +79,9 @@ class _AddCarViewState extends State<AddCarOwnerView> {
                   CustomTextField(
                     hinttext: "price for rent",
                     onchanged: (p0) {
-                      carOwner.paymentPerMonth = int.parse(p0);
+                      carOwner.paymentPerMonth = int.tryParse(p0);
                     },
+                    keyboardType: TextInputType.number,
                   ),
                   const SizedBox(height: 30),
                   CustomTextField(
@@ -107,13 +110,16 @@ class _AddCarViewState extends State<AddCarOwnerView> {
                                 "Either Email or Id is inserted before");
                           }
                         } else {
-                          
+                          print(carOwner.address);
+                          DBCarOwner.insertCarOwner(carOwner);
+                          await DBCarOwner.printAllCarOwnersInfo();
+                          currCarOwner = await DBCarOwner.getCarOwnerByEmail(
+                              carOwner.email!);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CarOwnerHomeView()));
-                          DBCarOwner.insertCarOwner(carOwner);
-                          await DBCarOwner.printAllCarOwnersInfo();
+                                  builder: (context) =>
+                                      const CarOwnerHomeView()));
                         }
                       } else {
                         showmySnackBar(context, "Password mismatch");

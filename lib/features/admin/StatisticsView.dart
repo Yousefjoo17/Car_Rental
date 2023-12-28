@@ -34,13 +34,13 @@ class StatisticsView extends StatelessWidget {
                       customPieChartSectionData(
                           value: counts[0].toDouble(), color: Colors.red),
                       customPieChartSectionData(
-                          value: counts[0].toDouble(), color: Colors.green),
+                          value: counts[1].toDouble(), color: Colors.green),
                       customPieChartSectionData(
-                          value: counts[0].toDouble(), color: Colors.orange),
+                          value: counts[2].toDouble(), color: Colors.orange),
                       customPieChartSectionData(
-                          value: counts[0].toDouble(), color: Colors.purple),
+                          value: counts[1].toDouble(), color: Colors.purple),
                       customPieChartSectionData(
-                          value: counts[0].toDouble(), color: Colors.grey),
+                          value: counts[2].toDouble(), color: Colors.grey),
                     ],
                   ),
                 ),
@@ -48,10 +48,10 @@ class StatisticsView extends StatelessWidget {
             ),
           ),
           RowColor(text: names[0], color: Colors.red),
-          RowColor(text: names[0], color: Colors.green),
-          RowColor(text: names[0], color: Colors.orange),
-          RowColor(text: names[0], color: Colors.purple),
-          RowColor(text: names[0], color: Colors.grey),
+          RowColor(text: names[1], color: Colors.green),
+          RowColor(text: names[2], color: Colors.orange),
+          RowColor(text: names[1], color: Colors.purple),
+          RowColor(text: names[1], color: Colors.grey),
         ],
       ),
     );

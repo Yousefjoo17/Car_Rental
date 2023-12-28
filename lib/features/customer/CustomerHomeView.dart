@@ -70,7 +70,7 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                 itemList: cityList,
                 name: "city",
                 onChanged: (p0) async {
-                    vehicles = await DBVehicle.getVehiclesByCriteria(
+                  vehicles = await DBVehicle.getVehiclesByCriteria(
                       city: p0,
                       color: colordropDownValue,
                       modal: modaldropDownValue,
@@ -78,7 +78,6 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                   setState(() {
                     citydropDownValue = p0;
                   });
-                
                 },
               ),
               SelectionRow(
@@ -86,7 +85,7 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                 itemList: modalList,
                 name: "modal",
                 onChanged: (p0) async {
-                   vehicles = await DBVehicle.getVehiclesByCriteria(
+                  vehicles = await DBVehicle.getVehiclesByCriteria(
                       city: citydropDownValue,
                       color: colordropDownValue,
                       modal: p0,
@@ -94,7 +93,6 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                   setState(() {
                     modaldropDownValue = p0;
                   });
-                 
                 },
               ),
               SelectionRow(
@@ -102,7 +100,7 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                 itemList: colorList,
                 name: "color",
                 onChanged: (p0) async {
-                   vehicles = await DBVehicle.getVehiclesByCriteria(
+                  vehicles = await DBVehicle.getVehiclesByCriteria(
                       city: citydropDownValue,
                       color: p0,
                       modal: modaldropDownValue,
@@ -110,7 +108,6 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                   setState(() {
                     colordropDownValue = p0;
                   });
-                 
                 },
               ),
               SelectionRow(
@@ -118,7 +115,7 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                 itemList: yearList,
                 name: "year",
                 onChanged: (p0) async {
-                   vehicles = await DBVehicle.getVehiclesByCriteria(
+                  vehicles = await DBVehicle.getVehiclesByCriteria(
                       city: citydropDownValue,
                       color: colordropDownValue,
                       modal: modaldropDownValue,
@@ -126,7 +123,6 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                   setState(() {
                     yeardropDownValue = p0;
                   });
-                  
                 },
               ),
               SliverGrid(
@@ -140,6 +136,7 @@ class _CustomerHomeViewState extends State<CustomerHomeView> {
                     (BuildContext context, int index) {
                   return CustomCarCard(
                     vehicle: vehicles[index],
+                    src: 'assets/images/c$index.jpg',
                   );
                 }, childCount: vehicles.length),
               ),
