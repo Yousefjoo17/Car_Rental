@@ -82,7 +82,7 @@ class DBCarOwner {
     }
   }
 
-  static Future<List<Vehicle>> getVehiclesByOwnerId(int ownerID) async {
+  static Future<List<Vehicle>> getVehiclesByOwnerID(int ownerID) async {
     final dbClient = await SqlDb().db;
     final List<Map<String, dynamic>> maps = await dbClient!.query(
       'Vehicle',

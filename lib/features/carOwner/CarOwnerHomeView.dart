@@ -1,5 +1,6 @@
 import 'package:carrental/constants.dart';
 import 'package:carrental/core/DB/DBCarOwners.dart';
+import 'package:carrental/core/DB/DBVeihcle.dart';
 import 'package:carrental/core/methods/Custom_Box_Decoration.dart';
 import 'package:carrental/core/models/veihcle.dart';
 import 'package:carrental/core/widgets/Custom_button.dart';
@@ -26,8 +27,9 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
   }
 
   Future<void> fetch() async {
-    vechicles = await DBCarOwner.getVehiclesByOwnerId(currCarOwner!.ownerID!);
-    print("length ${vechicles.length}");
+    vechicles = await DBCarOwner.getVehiclesByOwnerID(currCarOwner!.ownerID!);
+    DBVehicle.printAllVehiclesInfo();
+    print("lengtttttttttttttttttttttttttttttttttth ${vechicles.length}");
     setState(() {});
   }
 
@@ -44,7 +46,7 @@ class _CarOwnerHomeViewState extends State<CarOwnerHomeView> {
               const SizedBox(height: 30),
               const Center(
                 child: Text(
-                  'your registed cars',
+                  'Your Cars',
                   style: TextStyle(
                       fontSize: 30,
                       color: Colors.cyan,

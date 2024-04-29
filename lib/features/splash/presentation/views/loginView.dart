@@ -136,6 +136,8 @@ class _LoginViewState extends State<LoginView> {
                             if (found) {
                               currCarOwner =
                                   await DBCarOwner.getCarOwnerByEmail(email!);
+                              print(currCarOwner!.ownerID);
+                              print('CurrCarOwnerIDDDDDDDDDDDDDDDD');
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
